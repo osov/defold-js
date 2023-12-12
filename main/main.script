@@ -1,0 +1,16 @@
+local js = require("defjs.defjs")
+
+function init(self)
+    js.call_js("console.log", "asd", 1234)
+    js.call_js("console.log", { sdc = 23 })
+    local location = js.call_js("location.href")
+    print("location", location)
+    local result = js.call_js("test_function", 25, 50)
+    print("result test_function", result)
+    js.call_js_with_static_callback("test_function2", { param1 = "param1", param2 = 123 }, function(x, y)
+        print("mouse_click", x, y)
+    end)
+    js.call_js_with_callback("test_function3", { timeout = 2000 }, function(value)
+        print("timer:", value)
+    end)
+end
