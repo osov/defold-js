@@ -1,4 +1,4 @@
-# Мост JS <-> Lua
+# Мост Lua <-> JS
 
 ## Сторона Lua
 
@@ -56,7 +56,7 @@ function test_function3(params, callback) {
 Вызов из lua:
 
 ```lua
-local js = require("jsdef.jsdef")
+local js = require("defjs.defjs")
 
 js.call_js("console.log", "asd", 1234)
 js.call_js("console.log", { sdc = 23 })

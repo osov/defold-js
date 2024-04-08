@@ -13,9 +13,11 @@ input_method = HiddenInputField
 
 [project]
 bundle_resources = /res
+title = Defold - JS
 
 [html5]
 htmlfile = /manifests/engine_template.html
 
 [library]
 include_dirs = defjs
+
