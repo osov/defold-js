@@ -12,7 +12,7 @@ let LibraryDefJs = {
                     for (let i = 1; i < arguments.length; i++) parameters.push(arguments[i]);
                     message = JSON.stringify(parameters);
                 }
-                let msg = allocate(intArrayFromString(message), ALLOC_NORMAL);
+                let msg = stringToNewUTF8(message);
                 {{{makeDynCall("viii", "DefJsLib._callback")}}}(callback_id, msg);
                 Module._free(msg);
             }
@@ -80,7 +80,7 @@ let LibraryDefJs = {
 
     DefJs_CallJs: function (method, parameters, callback_id) {
         let result = DefJsLib.call_js(method, parameters, callback_id);
-        if (result) return allocate(intArrayFromString(result), ALLOC_NORMAL);
+        if (result) return stringToNewUTF8(result);
     },
 }
 
