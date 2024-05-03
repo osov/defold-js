@@ -1,5 +1,7 @@
 # Мост Lua <-> JS
 
+Для версии Defold >= 1.8.0
+
 ## Сторона Lua
 
 ### function call_js(method, ...)
@@ -46,7 +48,7 @@ function test_function2(params, callback) {
 function test_function3(params, callback) {
     console.log("test_function3 params:", params);
     setTimeout(callback, params.timeout, "callback test_function3");
-    
+
     // Если вызывать функцию через call_js_with_callback, то так не стоит делать, т.к. можно вызвать "чужой" колбек
     // setInterval(callback, params.timeout, "callback test_function3");
 }

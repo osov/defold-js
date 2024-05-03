@@ -1,7 +1,5 @@
 local M = {}
 
-local json = require("defjs.json")
-
 local function parse_result(result)
     if result ~= nil then
         local result_object = json.decode(result)
@@ -13,14 +11,16 @@ local function parse_result(result)
 end
 
 local function call_js_with_callback(method, parameters, callback, remove_callback)
-    defjs.call_js(method, parameters ~= nil and json.encode({ parameters }) or nil, remove_callback, function(self, result)
-        local is_ok, tbl = pcall(json.decode, result)
-        if is_ok then
-            callback(unpack(tbl))
-        else
-            callback()
-        end
-    end)
+    if defjs then
+        defjs.call_js(method, parameters ~= nil and json.encode({ parameters }) or nil, remove_callback, function(self, result)
+            local is_ok, tbl = pcall(json.decode, result)
+            if is_ok then
+                callback(unpack(tbl))
+            else
+                callback()
+            end
+        end)
+    end
 end
 
 ---Выполнить функцию JS или получить значение переменной.

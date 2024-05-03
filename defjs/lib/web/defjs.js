@@ -13,7 +13,7 @@ let LibraryDefJs = {
                     message = JSON.stringify(parameters);
                 }
                 let msg = stringToNewUTF8(message);
-                {{{makeDynCall("viii", "DefJsLib._callback")}}}(callback_id, msg);
+                {{{makeDynCall("vii", "DefJsLib._callback")}}}(callback_id, msg);
                 Module._free(msg);
             }
         },
@@ -80,7 +80,7 @@ let LibraryDefJs = {
 
     DefJs_CallJs: function (method, parameters, callback_id) {
         let result = DefJsLib.call_js(method, parameters, callback_id);
-        if (result) return stringToNewUTF8(result);
+        if (result) return stringToUTF8OnStack(result);
     },
 }
 
