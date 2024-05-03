@@ -85,4 +85,4 @@ let LibraryDefJs = {
 }
 
 autoAddDeps(LibraryDefJs, '$DefJsLib');
-mergeInto(LibraryManager.library, LibraryDefJs);
+addToLibrary(LibraryDefJs);
